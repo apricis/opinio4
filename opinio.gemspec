@@ -2,7 +2,7 @@
 require File.expand_path( '../lib/opinio/version', __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = "opinio4"
+  s.name        = "opinio"
   s.version     = Opinio::Version::VERSION
   s.platform    = Gem::Platform::RUBY
 
