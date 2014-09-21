@@ -3,7 +3,7 @@ source "http://rubygems.org"
 gemspec
 
 gem "kaminari"
-gem "rails", "~> 3.0.0"
+gem "rails", "~> 4.1.5"
 gem "sqlite3"
 gem "jquery-rails"
 
@@ -24,7 +24,7 @@ group :test do
   gem "capybara"
   gem "launchy"
   gem "database_cleaner"
-  gem "rspec-rails", :git => "https://github.com/rspec/rspec-rails.git", :tag => "v2.12.2"
+  gem "rspec-rails", '~> 2.14.0.rc1'
 end
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
