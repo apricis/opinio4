@@ -37,6 +37,11 @@ class Opinio::CommentsController < ApplicationController
 
     if can_destroy_opinio?(@comment)
       @comment.destroy
+      if defined?(WebsocketRails)
+        WebsocketRails[@comment.commentable.class.name << @comment.commentable.id.to_s].trigger(:uncomment, {
+          id: @comment.id
+        })
+      end
       set_flash(:notice, t('opinio.messages.comment_destroyed'))
     else
       #flash[:error]  = I18n.translate('opinio.comment.not_permitted', :default => "Not permitted")

@@ -14,8 +14,8 @@ module Opinio
                             :as => :commentable,
                             :dependent => :destroy }
 
-        has_many :comments, default_options.merge(options), -> { order "created_at #{Opinio.sort_order}" }
-
+        has_many :comments, -> { order "created_at #{Opinio.sort_order}" }, default_options.merge(options)
+        
       end
     end
   
