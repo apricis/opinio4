@@ -10,6 +10,12 @@ class Opinio::CommentsController < ApplicationController
     @comment = resource.comments.build(comments_params)
     @comment.owner = current_commenter
     if @comment.save
+      if defined?(WebsocketRails)
+        WebsocketRails[@comment.commentable.class.name << @comment.commentable.id.to_s].trigger(:new_comment, {
+          html: render_to_string(@comment),
+          id: @comment.id
+        })
+      end
       flash_area = :notice
       message = t('opinio.messages.comment_sent')
     else
