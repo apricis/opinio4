@@ -13,7 +13,8 @@ class Opinio::CommentsController < ApplicationController
       if defined?(WebsocketRails)
         WebsocketRails[@comment.commentable.class.name << @comment.commentable.id.to_s].trigger(:new_comment, {
           html: render_to_string(@comment),
-          id: @comment.id
+          id: @comment.id,
+          owner: @comment.owner.id
         })
       end
       flash_area = :notice
